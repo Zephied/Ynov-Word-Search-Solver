@@ -43,21 +43,24 @@ func sep() {
 	}
 }
 
-func Compare(field [10][10]rune, wordList []string) bool {
-	row := 0
-	grid := 0
-	elems := 0
-	char := 0
-	for row < 10 {
-		for grid < 10 {
-			for {
-				if wordList[elems][char] == byte(field[row][grid]) {
-
+func Compare(field [10][10]rune, wordList []string) []string {
+	wordFound := []string{}
+	for _, word := range wordList {
+		for row := 0; row < 10; row++ {
+			for grid := 0; grid < 10; grid++ {
+				if rune(word[0]) == field[row][grid] {
+					char := 1
+					for char < len(word) && grid+char < len(field[row]) && rune(word[char]) == field[row][grid+char] {
+						char++
+					}
+					if char == len(word) {
+						wordFound = append(wordFound, word)
+					}
 				}
 			}
 		}
 	}
-	return false
+	return wordFound
 }
 
 func ReadFile() []string {
