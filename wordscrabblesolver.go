@@ -1,22 +1,6 @@
-package main
+package Correction
 
 import "github.com/01-edu/z01"
-
-func main() {
-	field := [10][10]rune{
-		{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'},
-		{'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'},
-		{'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D'},
-		{'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'},
-		{'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'},
-		{'Y', 'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'},
-		{'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R'},
-		{'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B'},
-		{'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'},
-		{'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'},
-	}
-	Solver(field)
-}
 
 func Solver(field [10][10]rune) {
 	PrintScramble(field)
