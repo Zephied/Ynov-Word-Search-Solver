@@ -1,6 +1,5 @@
 caen
 netp
-chevre
 sandales
 casquette
 chevre
