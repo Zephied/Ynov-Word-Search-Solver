@@ -18,5 +18,8 @@ func CompareRow(field [10][10]rune, wordList []string) []string { // fonction po
 			}
 		}
 	}
+	if len(wordFound) == 0 { // si aucun mot n'a été trouvé
+		wordFound = append(wordFound, "Aucun mot de la liste n'a été trouvé") // ajoute un message dans la liste des mots trouvés
+	}
 	return wordFound // retourne la liste des mots trouvés
 }

@@ -19,5 +19,8 @@ func CompareDiagonalUp(field [10][10]rune, wordList []string) []string { // fonc
 			}
 		}
 	}
+	if len(wordFound) == 0 { // si aucun mot n'a été trouvé
+		wordFound = append(wordFound, "Aucun mot de la liste n'a été trouvé") // ajout d'un message dans la liste des mots trouvés
+	}
 	return wordFound // retour de la liste des mots trouvés
 }
