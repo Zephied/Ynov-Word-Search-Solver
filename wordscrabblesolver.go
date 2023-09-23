@@ -2,6 +2,7 @@ package Correction
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 
 	"github.com/01-edu/z01"
@@ -43,14 +44,86 @@ func sep() {
 	}
 }
 
-func Compare(field [10][10]rune, wordList []string) []string {
+func Compare(field [10][10]rune, wordlist []string) string {
+	wordInRow := CompareRow(field, wordlist)
+	wordInGrid := CompareGrid(field, wordlist)
+	wordInDiagonalUp := CompareDiagonalUp(field, wordlist)
+	wordInDiagonalDown := CompareDiagonalDown(field, wordlist)
+	fmt.Println(wordInDiagonalUp)
+	fmt.Println(wordInGrid)
+	fmt.Println(wordInRow)
+	fmt.Println(wordInDiagonalDown)
+	return ""
+}
+
+func CompareRow(field [10][10]rune, wordList []string) []string { // fonction pour comparer les mots entre le tableau et le fichier
+	wordFound := []string{}         // liste des mots trouvés
+	for _, word := range wordList { // parcours des mots dans le fichier
+		for row := 0; row < 10; row++ { // parcours les lignes du tableau
+			for grid := 0; grid < 10; grid++ { // parcours les colonnes du tableau
+				if rune(word[0]) == field[row][grid] { // si la première lettre du mot correspond à la première lettre du table
+					char := 1                                                                                          // compte le nombre de caractères restants dans le mot
+					for char < len(word) && grid+char < len(field[row]) && rune(word[char]) == field[row][grid+char] { // parcours les caractères restants dans le mot
+						char++ // compte le nombre de caractères restants dans le mot
+					}
+					if char == len(word) { // si le nombre de caractères restants dans le mot correspond à la taille du mot
+						wordFound = append(wordFound, word) // ajoute le mot trouvé dans la liste des mots trouvés
+					}
+				}
+			}
+		}
+	}
+	return wordFound // retourne la liste des mots trouvés
+}
+
+func CompareGrid(field [10][10]rune, wordList []string) []string {
 	wordFound := []string{}
 	for _, word := range wordList {
 		for row := 0; row < 10; row++ {
 			for grid := 0; grid < 10; grid++ {
 				if rune(word[0]) == field[row][grid] {
 					char := 1
-					for char < len(word) && grid+char < len(field[row]) && rune(word[char]) == field[row][grid+char] {
+					for char < len(word) && row+char < len(field[row]) && rune(word[char]) == field[row+char][grid] {
+						char++
+					}
+					if char == len(word) {
+						wordFound = append(wordFound, word)
+					}
+				}
+			}
+		}
+	}
+	return wordFound
+}
+
+func CompareDiagonalUp(field [10][10]rune, wordList []string) []string {
+	wordFound := []string{}
+	for _, word := range wordList {
+		for row := 0; row < 10; row++ {
+			for grid := 0; grid < 10; grid++ {
+				if rune(word[0]) == field[row][grid] {
+					char := 1
+					for char < len(word) && row+char < len(field[row]) && grid+char < len(field[row]) && rune(word[char]) == field[row+char][grid+char] {
+						char++
+					}
+					if char == len(word) {
+						wordFound = append(wordFound, word)
+					}
+				}
+			}
+		}
+	}
+	return wordFound
+}
+
+func CompareDiagonalDown(field [10][10]rune, wordList []string) []string {
+	wordFound := []string{}
+	for _, word := range wordList {
+		for row := 0; row < 10; row++ {
+			for grid := 0; grid < 10; grid++ {
+				if rune(word[0]) == field[row][grid] {
+					char := 1
+					for char < len(word) && row-char > 0 && grid+char < len(field[row]) && rune(word[char]) == field[row-char][grid+char] {
 						char++
 					}
 					if char == len(word) {
