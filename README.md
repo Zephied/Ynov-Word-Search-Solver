@@ -7,8 +7,8 @@ This script was created to find words hidden in a letter table with 10 columns a
 
 ## Authors
 
-- [@GALMICHE Nicolas](https://www.github.com/ganicolas)
-- [@NOGUES Morgan](https://github.com/Morgan-ngs)
+- [@GALMICHE Nicolas](https://ytrack.learn.ynov.com/git/ganicolas)
+- [@NOGUES Morgan](https://ytrack.learn.ynov.com/git/nmorgan)
 
 
 ## Documentation
