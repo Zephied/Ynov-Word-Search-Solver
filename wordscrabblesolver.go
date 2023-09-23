@@ -12,6 +12,7 @@ func Solver(field [10][10]rune) {
 	PrintScramble(field)     // fonction pour afficher le tableau
 	wordList := ReadFile()   // fonction pour lire le fichier
 	Compare(field, wordList) // fonction pour comparer les mots entre le tableau et le fichier
+	PrintWords(wordList)
 }
 
 func PrintScramble(field [10][10]rune) {
@@ -43,7 +44,6 @@ func sep() {
 		i++
 	}
 }
-
 func Compare(field [10][10]rune, wordlist []string) string {
 	wordInRow := CompareRow(field, wordlist)
 	wordInGrid := CompareGrid(field, wordlist)
@@ -56,6 +56,7 @@ func Compare(field [10][10]rune, wordlist []string) string {
 	return ""
 }
 
+// Ligne
 func CompareRow(field [10][10]rune, wordList []string) []string { // fonction pour comparer les mots entre le tableau et le fichier
 	wordFound := []string{}         // liste des mots trouvés
 	for _, word := range wordList { // parcours des mots dans le fichier
@@ -76,6 +77,7 @@ func CompareRow(field [10][10]rune, wordList []string) []string { // fonction po
 	return wordFound // retourne la liste des mots trouvés
 }
 
+// Colonne
 func CompareGrid(field [10][10]rune, wordList []string) []string {
 	wordFound := []string{}
 	for _, word := range wordList {
@@ -96,6 +98,7 @@ func CompareGrid(field [10][10]rune, wordList []string) []string {
 	return wordFound
 }
 
+// Diagnoal gauche
 func CompareDiagonalUp(field [10][10]rune, wordList []string) []string {
 	wordFound := []string{}
 	for _, word := range wordList {
@@ -116,6 +119,7 @@ func CompareDiagonalUp(field [10][10]rune, wordList []string) []string {
 	return wordFound
 }
 
+// Diagnoal droit
 func CompareDiagonalDown(field [10][10]rune, wordList []string) []string {
 	wordFound := []string{}
 	for _, word := range wordList {
@@ -160,6 +164,16 @@ func ReadFile() []string {
 func error(s string) {
 	for _, v := range s {
 		z01.PrintRune(v)
+	}
+	z01.PrintRune('\n')
+}
+
+func PrintWords(words []string) {
+	for _, word := range words {
+		for _, c := range word {
+			z01.PrintRune(c)
+		}
+		z01.PrintRune(' ')
 	}
 	z01.PrintRune('\n')
 }
