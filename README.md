@@ -1,8 +1,5 @@
 # Word-Search-Solver
 
-
-# Word-Search-Solver
-
 This script was created to find words hidden in a letter table with 10 columns and 10 lines. It uses different functions to look vertically, column-wise and diagonally. It then displays the list of words found in the table.
 
 ## Authors
