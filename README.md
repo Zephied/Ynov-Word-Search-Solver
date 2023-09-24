@@ -30,6 +30,7 @@ This script was created to find words hidden in a letter table with 10 columns a
 - Software to open the code (visual studio code)
 
 **Then**
+- do a git clone https://ytrack.learn.ynov.com/git/ganicolas/Word-Search-Solver
 - open files in the master 
 - open files in the master 
 - add your main folder
